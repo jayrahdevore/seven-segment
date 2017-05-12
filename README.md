@@ -3,7 +3,7 @@ Example code for driving a 4 digit 7 segment display with a minimum of component
 
 ---
 
-###TODO
+### TODO
 
 * upload finalized schematic
 * create several variations to demonstrate functionality
