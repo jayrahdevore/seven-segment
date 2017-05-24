@@ -2,6 +2,8 @@
  Created by legowave440
  */
 
+#define F_CPU 8000000 //8 MHz
+
 #include <stdio.h>
 #include <avr/io.h>
 #include <avr/interrupt.h>
@@ -15,7 +17,7 @@ int8_t PortB[4]; //These are the segment controls for digits 0-4
 //Init
 void initIO(void) {
     //Initialize the segments for each digit
-    
+
     DDRD = DDRD | 0b11110000; //Digit output setup
     DDRB = 0b11111111; //Segment output setup
 }
@@ -143,7 +145,7 @@ uint8_t chartodigit(char input) {
 //This replaces the numbers with text.  Only works with ALL CAPS
 void text(char input[4]) {
     //colon(false);  //IMPLEMENT WHEN COLON IS USED
-    
+
     for (int x = 0; x <= 4; x++) {
         PortB[x] = chartodigit(input[x]);
     }
@@ -153,39 +155,39 @@ void text(char input[4]) {
 
 //This function updates the display
 void updateDisplay(uint8_t brightness) {
-    
+
     for ( uint8_t x = 0; x < 4; x++ ) { //Run through each digit (Digits 0 - 3)
-        
+
         //Be careful not to burn out the display!
-        
+
         PORTD = PORTD | ( 0b00010000 << x ); //Set the digit
-        
+
         PORTB = PortB[x]; //Turn on segments by setting LOW
-        
+
         //This changes the time each digit spends on
         for (uint8_t y = 0; y < brightness; y++) {
             _delay_us(1);
         }
-        
+
         PORTD = PORTD & 0b00001111; //Turn off the digit
-        
+
         PORTB = 0b11111111;  //Turn off segments by setting HIGH
-        
+
         _delay_us(500);
-        
+
     }
-    
+
 }
 
 //This function updates the display AND sets individual brightnesses for each side
 void updateDigitDisplay(uint8_t brightness_l, uint8_t brightness_r) {
-    
+
     for ( uint8_t x = 0; x < 4; x++ ) { //Run through each digit (Digits 0 - 3)
-        
+
         //Be careful not to burn out the display!
-        
+
         PORTD = PORTD | ( 0b00010000 << x ); //Set the digit
-        
+
         PORTB = PortB[x]; //Turn on segments by setting LOW
         if (x < 2) {
             //This changes the time each digit spends on
@@ -198,15 +200,15 @@ void updateDigitDisplay(uint8_t brightness_l, uint8_t brightness_r) {
                 _delay_us(1);
             }
         }
-        
+
         PORTD = PORTD & 0b00001111; //Turn off the digit
-        
+
         PORTB = 0b11111111;  //Turn off segments by setting HIGH
-        
+
         _delay_us(500);
-        
+
     }
-    
+
 }
 
 uint8_t inttodig(int input) {
@@ -247,7 +249,7 @@ uint8_t inttodig(int input) {
             break;
     }
     return x;
-    
+
 }
 
 //This sets the score of the 2 righmost digits
@@ -316,8 +318,8 @@ void flashRightDigit(void) {
 
 int main(void) {
 	initIO();
-    
-    
+
+
     //leftScore(0);
     text("LETS");
     flashDisplay();
@@ -337,7 +339,7 @@ int main(void) {
     for ( int x = 100; x >= 0; x--) {
         updateDisplay(255);
     }
-    
+
     leftScore(0);
     rightScore(0);
 
@@ -352,8 +354,8 @@ int main(void) {
 
 
 /* From OLD Library:
- 
- 
+
+
  void Seg::
  void Seg::colon(boolean input) {
  //Colon = input;
@@ -363,8 +365,8 @@ int main(void) {
  PortB[0] = PortB[0] & B01111111;
  }
  }
- 
- 
+
+
  byte Seg::
- 
+
  */
