@@ -30,5 +30,5 @@ void updateDisplay(uint8_t brightness)
 
 * upload finalized schematic
 * seperate the display function library from the other functional elements
-
+* add game functionality
 
