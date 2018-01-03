@@ -8,7 +8,8 @@ TARGET_MCU = atmega328p
 PROGRAMMER = buspirate
 
 # programmer port
-PORT = /dev/ttyUSB0
+#PORT = /dev/ttyUSB0 #linux
+PORT = /dev/tty.usbserial-A904O6Y2 #mac
 
 # compiler flage
 CFLAGS =-std=c99 -Wall -Os
@@ -24,6 +25,7 @@ $(TARGET_FILE): $(TARGET_FILE).c
 
 upload:
 	avr-gcc $(CFLAGS) -mmcu=$(TARGET_MCU) -o $(TARGET_FILE) $(TARGET_FILE).c
+	avr-objcopy $(TARGET_FILE) -O binary
 	avrdude -p $(TARGET_MCU) -P $(PORT) -c $(PROGRAMMER) $(TARGET_FILE) -U flash:w:$(TARGET_FILE)
 
 clean:
