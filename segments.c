@@ -133,7 +133,7 @@ void updateDisplay(uint8_t brightness) {
 
         //Be careful not to burn out the display!
 
-        PORTD = PORTD | ( 0b10000000 >> x ); //Set the digit
+        PORTD = PORTD | ( (1 << 7) >> x ); //Set the digit
 
         PORTB = PortB[x]; //Turn on segments by setting LOW
 
@@ -159,7 +159,7 @@ void updateDigitDisplay(uint8_t brightness_l, uint8_t brightness_r) {
 
         //Be careful not to burn out the display!
 
-        PORTD = PORTD | ( 0b10000000 >> x ); //Set the digit
+        PORTD = PORTD | ( (1 << 7) >> x ); //Set the digit
 
         PORTB = PortB[x]; //Turn on segments by setting LOW
         if (x < 2) {

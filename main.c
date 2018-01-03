@@ -5,9 +5,9 @@
 #include "segments.h"
 #include <stdio.h>
 #include <avr/io.h>
-#include <avr/interrupt.h>
+//#include <avr/interrupt.h>
 #include <util/delay.h>
-#include <avr/sleep.h>
+//#include <avr/sleep.h>
 #include <stdint.h>
 
 
@@ -21,7 +21,7 @@ void initIO(void) {
     DDRD = DDRD | 0b11110000; //Digit output setup
     DDRB = 0b11111111; //Segment output setup
 }
-
+/*
 void sleep(void) {
     //PORTD = PORTD & 0b00001111; //Turn off the digits
     //PORTB = 0b00000000; //Turn off the segments
@@ -32,15 +32,12 @@ void sleep(void) {
     sei();
     sleep_cpu();
 }
-
+*/
 /*  -    -   -   -   -   -   -   -   - Main Program -    -   -   -   -   -   -   -   - */
 
 
 int main(void) {
 	initIO();
-
-
-    //leftScore(0);
     text("LETS");
     flashDisplay();
     text("PLAY");
@@ -69,24 +66,3 @@ int main(void) {
 	return 0; // never reached
 }
 
-
-
-
-
-/* From OLD Library:
-
-
- void Seg::
- void Seg::colon(boolean input) {
- //Colon = input;
- if (Colon == true) {
- PortB[0] = PortB[0]	| B10000000;
- } else {
- PortB[0] = PortB[0] & B01111111;
- }
- }
-
-
- byte Seg::
-
- */
