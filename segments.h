@@ -1,5 +1,5 @@
 #ifndef SEGMENTS_H
-#define WHATEVER_H_INCLUDED
+#define SEGMENTS_H
 #include <stdint.h>
 
 #define F_CPU 8000000 //8 MHz
