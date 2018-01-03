@@ -29,5 +29,6 @@ void updateDisplay(uint8_t brightness)
 ### TODO
 
 * upload finalized schematic
-* create a library with the display functions
+* seperate the display function library from the other functional elements
+
 

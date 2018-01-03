@@ -1,9 +1,14 @@
 #ifndef SEGMENTS_H
 #define WHATEVER_H_INCLUDED
+#include <stdint.h>
+
+#define F_CPU 8000000 //8 MHz
+
 /*
  Created by legowave440
  */
 
+uint8_t PortB[4]; //These are the segment controls for digits 0-4
 
 /*  -   -   -   -   -   Display -   -   -   -   -   -   */
 

@@ -21,12 +21,12 @@ TARGET_FILE = main
 all: $(TARGET_FILE)
 
 $(TARGET_FILE): $(TARGET_FILE).c
-	avr-gcc $(CFLAGS) -mmcu=$(TARGET_MCU) -o $(TARGET_FILE) $(TARGET_FILE).c
+	avr-gcc $(CFLAGS) -mmcu=$(TARGET_MCU) -o $(TARGET_FILE) *.c
 
 upload:
-	avr-gcc $(CFLAGS) -mmcu=$(TARGET_MCU) -o $(TARGET_FILE) $(TARGET_FILE).c
+	avr-gcc $(CFLAGS) -mmcu=$(TARGET_MCU) -o $(TARGET_FILE) *.c
 	avr-objcopy $(TARGET_FILE) -O binary
-	avrdude -p $(TARGET_MCU) -P $(PORT) -c $(PROGRAMMER) $(TARGET_FILE) -U flash:w:$(TARGET_FILE)
+	avrdude -p $(TARGET_MCU) -P $(PORT) -c $(PROGRAMMER) -U flash:w:$(TARGET_FILE)
 
 clean:
 	$(RM) $(TARGET_FILE)

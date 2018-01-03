@@ -1,6 +1,9 @@
 /*
  Created by legowave440
  */
+#include "segments.h"
+#include <avr/io.h>
+#include <util/delay.h>
 
 
 /*  -   -   -   -   -   Display -   -   -   -   -   -   */
@@ -130,7 +133,7 @@ void updateDisplay(uint8_t brightness) {
 
         //Be careful not to burn out the display!
 
-        PORTD = PORTD | ( 0b00010000 << x ); //Set the digit
+        PORTD = PORTD | ( 0b10000000 >> x ); //Set the digit
 
         PORTB = PortB[x]; //Turn on segments by setting LOW
 
@@ -156,7 +159,7 @@ void updateDigitDisplay(uint8_t brightness_l, uint8_t brightness_r) {
 
         //Be careful not to burn out the display!
 
-        PORTD = PORTD | ( 0b00010000 << x ); //Set the digit
+        PORTD = PORTD | ( 0b10000000 >> x ); //Set the digit
 
         PORTB = PortB[x]; //Turn on segments by setting LOW
         if (x < 2) {
@@ -279,5 +282,5 @@ void flashRightDigit(void) {
     }
     for ( int x = 255; x >= 0; x--) {
         updateDigitDisplay(BRIGHTNESS, x);
-    }
+   }
 }
