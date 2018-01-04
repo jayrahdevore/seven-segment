@@ -2,6 +2,7 @@
 Example code for driving a 4 digit 7 segment display with a minimum of components
 
 ---
+![alt text](build-photos/current-build.JPG "Circuit Schematic")
 
 ## How to...
 
