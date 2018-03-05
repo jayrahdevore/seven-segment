@@ -30,7 +30,7 @@ void updateDisplay(uint8_t brightness)
 * upload finalized schematic
 * seperate the display function library from the other functional elements
 * provide an example of use
-* **_supersize it_**
+<!--* **_supersize it_**
 
-<img src="build-photos/display-button.JPG" width="400">
+<!--<img src="build-photos/display-button.JPG" width="400">-->
 
