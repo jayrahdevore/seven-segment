@@ -4,7 +4,7 @@ Example code for driving a 4 digit 7 segment display with a minimum of component
 ---
 ![alt text](build-photos/current-build.JPG "Current Build")
 
-## How to...
+## Included functions
 
 * **initialize display I/O**
 
@@ -23,15 +23,13 @@ void text(char input[4])
 void updateDisplay(uint8_t brightness) 
 ```
 
-**NOTE:** _not doing this is a great way to turn the display off_
-
 ---
 
 ### TODO
 
 * upload finalized schematic
 * seperate the display function library from the other functional elements
-* add game scorekeeping functionality with buttons
+* provide an example of use
 * **_supersize it_**
 
 <img src="build-photos/display-button.JPG" width="400">
